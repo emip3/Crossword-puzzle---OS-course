@@ -152,8 +152,8 @@ void initCrossword(void)
     {
         for(int j = 0; j < 17; j++)
         {
-            crossword[i][j] = '-';
-            pCrossword[i][j] = '-';
+            crossword[i][j] = ' ';
+            pCrossword[i][j] = ' ';
         }
     }
 }
@@ -353,7 +353,6 @@ void update(int sig)
     printf("\n EL CRUCIGRAMA HA CAMBIADO \n");
 }
 
-
 void play(void)
 {
     int option;
@@ -413,7 +412,6 @@ void updateCrosswordAndPlay(void)
     updateCrossword(-1);
     play();
 }
-
 
 int main(int argc, const char * argv[])
 {
