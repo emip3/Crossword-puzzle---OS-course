@@ -77,7 +77,7 @@ sem_t semaphore;
 int lastInChar(char *str, char letter);
 int equals(char *str1, char *str2);
 
-void printWholeCrossword(void)
+void printWholeCrossword()
 {
     printf("\n");
     for(int i = 0; i < 17; i++)
@@ -91,7 +91,7 @@ void printWholeCrossword(void)
     printf("\n");
 }
 
-void printCrossword(void)
+void printCrossword()
 {
     printf("\n");
     for(int i = 0; i < 17; i++)
@@ -105,7 +105,7 @@ void printCrossword(void)
     printf("\n");
 }
 
-void printfQuesNAns(void)
+void printfQuesNAns()
 {
     for(int i = 0; i < 6; i++)
     {
@@ -127,7 +127,7 @@ void printfLastInChar(int index, char letter)
     printf("\n");
 }
 
-void printlastInCharAll(void)
+void printlastInCharAll()
 {
     printfLastInChar(0, 'r');
     printfLastInChar(0, 'a');
@@ -136,7 +136,7 @@ void printlastInCharAll(void)
     printfLastInChar(4, 't');
 }
 
-void printQuestion(void)
+void printQuestion()
 {
     for(int i = 0; i < 6; i++)
     {
@@ -146,7 +146,7 @@ void printQuestion(void)
     }
 }
 
-void initCrossword(void)
+void initCrossword()
 {
     for(int i = 0; i < 17; i++)
     {
@@ -306,15 +306,15 @@ int equals(char *str1, char *str2)
     return 1;
 }
 
-void clearScreen(void)
+void clearScreen()
 {
-    for(int i = 0; i < 100; i++)
+    for(int i = 0; i < 50; i++)
     {
         printf("\n");
     }
 }
 
-int checkIfWin(void)
+int checkIfWin()
 {
     int out = 0;
     for (int i = 0; i < 5; i++)
@@ -407,10 +407,23 @@ void play(void)
     }
 }
 
-void updateCrosswordAndPlay(void)
+void updateCrosswordAndPlay()
 {
     updateCrossword(-1);
     play();
+}
+
+void printInstruction()
+{
+    printf("*****\tBienvenido/a a 'LA CASA DE LAS HOJAS'\t*****\n\n");
+    sleep(1);
+    printf("Intenta contestar las preguntas para completar el crucigrama.\n\n");
+    sleep(1);
+    printf("Tendrás 3 minutos para completarlo, si te pasas, EL CRUCIGRAMA CAMBIARÁ.\n\n");
+    sleep(1);
+    printf("Recuerda que después de contestar, escribe cualquier letra o número y da 'ENTER'\n");
+    sleep(1);
+    printf("Recuerda que siempre puedes pausar el juego usando CTRL+C\n\n");
 }
 
 int main(int argc, const char * argv[])
@@ -428,12 +441,8 @@ int main(int argc, const char * argv[])
 
         signal(SIGALRM, update);
 
-        printf("Bienvenido/a a 'LA CASA DE LAS HOJAS'\n");
-        printf("Intenta contestar las preguntas para completar el crucigrama.\n");
-        printf("Tendrás 3 minutos para completarlo, si te pasas, EL CRUCIGRAMA CAMBIARÁ.\n");
-        printf("Recuerda que siempre puedes pausar el juego usando CTRL+C\n");
-
         int playing = 0;
+        printInstruction();
         printf("\nEscribe '1' para empezar el juego: ");
         scanf("%d", &playing);
 
